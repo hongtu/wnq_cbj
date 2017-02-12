@@ -1,0 +1,368 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\A\Desktop\储板机\程序\主程序\main.uvproj
+Project File Date:  01/09/2017
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+main.c(160): error C202: 'count': undefined identifier
+main.c(162): error C202: 'count': undefined identifier
+main.c(163): error C141: syntax error near '}'
+main.c(191): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(161): error C202: 'count': undefined identifier
+main.c(163): error C202: 'count': undefined identifier
+main.c(164): error C141: syntax error near '}'
+main.c(192): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(165): error C202: 'count': undefined identifier
+main.c(167): error C202: 'count': undefined identifier
+main.c(168): error C141: syntax error near '}'
+main.c(196): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(167): error C141: syntax error near 'return'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(167): error C141: syntax error near 'return'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(167): error C141: syntax error near 'return'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(167): error C141: syntax error near 'return'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(167): error C141: syntax error near 'return'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(167): error C141: syntax error near 'return'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(167): error C141: syntax error near 'return'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(167): error C141: syntax error near 'return'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(167): error C141: syntax error near 'return'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(168): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(168): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(163): warning C206: 'pullboard': missing function-prototype
+main.c(144): warning C280: 'opt_level': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0332H
+Program Size: data=141.4 xdata=0 code=1153
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(166): warning C206: 'pullboard': missing function-prototype
+main.c(144): warning C280: 'opt_level': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0332H
+Program Size: data=141.4 xdata=0 code=1153
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(158): error C141: syntax error near 'int'
+main.c(158): error C202: 'a': undefined identifier
+main.c(158): error C202: 'a': undefined identifier
+main.c(158): error C202: 'a': undefined identifier
+main.c(158): error C141: syntax error near ')'
+main.c(162): error C202: 'a': undefined identifier
+main.c(166): error C202: 'a': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(149): error C141: syntax error near 'unsigned'
+main.c(160): error C141: syntax error near 'int'
+main.c(160): error C202: 'a': undefined identifier
+main.c(160): error C202: 'a': undefined identifier
+main.c(160): error C202: 'a': undefined identifier
+main.c(160): error C141: syntax error near ')'
+main.c(164): error C202: 'a': undefined identifier
+main.c(168): error C202: 'a': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(149): error C141: syntax error near 'unsigned'
+main.c(149): error C202: 'a': undefined identifier
+main.c(160): error C141: syntax error near 'int'
+main.c(160): error C202: 'a': undefined identifier
+main.c(160): error C202: 'a': undefined identifier
+main.c(160): error C202: 'a': undefined identifier
+main.c(160): error C141: syntax error near ')'
+main.c(164): error C202: 'a': undefined identifier
+main.c(168): error C202: 'a': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(149): error C141: syntax error near 'unsigned'
+main.c(149): error C202: 'a': undefined identifier
+main.c(160): error C202: 'a': undefined identifier
+main.c(162): error C202: 'a': undefined identifier
+main.c(164): error C202: 'a': undefined identifier
+main.c(168): error C202: 'a': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(182): warning C206: 'pullboard': missing function-prototype
+main.c(146): warning C280: 'opt_level': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 02CCH
+Program Size: data=142.4 xdata=0 code=1191
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(181): warning C206: 'pullboard': missing function-prototype
+main.c(146): warning C280: 'opt_level': unreferenced local variable
+main.c(214): error C202: 'loop': undefined identifier
+main.c(214): error C141: syntax error near 'untill'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(181): warning C206: 'pullboard': missing function-prototype
+main.c(146): warning C280: 'opt_level': unreferenced local variable
+main.c(213): error C202: 'loop': undefined identifier
+main.c(214): error C202: 'untill': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(181): warning C206: 'pullboard': missing function-prototype
+main.c(146): warning C280: 'opt_level': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 02CCH
+Program Size: data=142.4 xdata=0 code=1191
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 02CCH
+Program Size: data=142.4 xdata=0 code=1191
+creating hex file from "main"...
+"main" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(181): warning C206: 'pullboard': missing function-prototype
+main.c(146): warning C280: 'opt_level': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 02C8H
+Program Size: data=142.4 xdata=0 code=1187
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(182): warning C206: 'pullboard': missing function-prototype
+main.c(146): warning C280: 'opt_level': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 023BH
+Program Size: data=142.4 xdata=0 code=1194
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(183): warning C206: 'pullboard': missing function-prototype
+main.c(146): warning C280: 'opt_level': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 023DH
+Program Size: data=142.4 xdata=0 code=1196
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(186): warning C206: 'pullboard': missing function-prototype
+main.c(146): warning C280: 'opt_level': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 02CAH
+Program Size: data=142.4 xdata=0 code=1189
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(171): error C141: syntax error near '='
+main.c(171): error C141: syntax error near ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+main.c(195): warning C206: 'pullboard': missing function-prototype
+main.c(147): warning C280: 'opt_level': unreferenced local variable
+main.c(228): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(195): warning C206: 'pullboard': missing function-prototype
+main.c(147): warning C280: 'opt_level': unreferenced local variable
+main.c(228): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(195): warning C206: 'pullboard': missing function-prototype
+main.c(147): warning C280: 'opt_level': unreferenced local variable
+main.c(228): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(195): warning C206: 'pullboard': missing function-prototype
+main.c(147): warning C280: 'opt_level': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0261H
+Program Size: data=143.4 xdata=0 code=1245
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(196): warning C206: 'pullboard': missing function-prototype
+main.c(147): warning C280: 'opt_level': unreferenced local variable
+main.c(207): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 01A5H
+Program Size: data=143.4 xdata=0 code=1252
+creating hex file from "main"...
+"main" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(196): warning C206: 'pullboard': missing function-prototype
+main.c(147): warning C280: 'opt_level': unreferenced local variable
+main.c(211): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SAFE?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 01A5H
+Program Size: data=143.4 xdata=0 code=1252
+creating hex file from "main"...
+"main" - 0 Error(s), 6 Warning(s).

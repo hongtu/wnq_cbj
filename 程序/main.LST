@@ -1,0 +1,286 @@
+C51 COMPILER V9.52.0.0   MAIN                                                              02/11/2017 15:10:28 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          /*
+   2          ×¢ÒâÊÂÏî
+   3          0¡¢ÉÏÉý10mmËùÐèµÄµç»ú²½Êý£¬ÁÙÊ±ÉèÖÃÎª600
+   4          1¡¢±ØÐëÓÐÒ»¸öÈ«¾Ö±äÁ¿ÓÃÀ´Í³¼Æµç»úµÄÎ»ÖÃ£¬´Ó³õÊ¼»¯Ö®Ç°¾Í¿ªÊ¼Í³¼Æ£¬·ÀÖ¹³õÊ¼»¯×²»ú»ò´«¸ÐÆ÷Ê§Ð§
+   5          2¡¢¼±Í£½Ó´¥Ö®ºó£¬±ØÐëÓÐÒ»¸öµ¥Æ¬»ú¸´Î»³õÊ¼»¯µÄ¹ý³Ì£¬·Ç´Ó0³õÊ¼»¯£¬·ÀÖ¹ÐÅºÅµÄ¼ÌÐø·¢ËÍ×²»úÒÔ¼°·ÇÔ­µãÔË¶¯
+   6          */
+   7          //³ýÁË³õÊ¼»¯Îª 0 µÄ³£Á¿»ò³£Á¿Íâ£¬ÆäËûµÄ±äÁ¿»ò³£Á¿¾ùÔÚ´Ë´¦¶¨Òå»òÉùÃ÷
+   8          #include <STC89C5xRC.H>                                                                     //52µ¥Æ¬»úÍ·ÎÄ¼þ
+   9          #include <stdio.h>                                                                          //»ù±¾º¯Êý¿â
+  10          #include <math.h>
+  11          #include <intrins.h>
+  12          #define uchar unsigned char
+  13          #define uint  unsigned int
+  14          
+  15          //¼ì²âµã
+  16          sbit k1 = P2^0;                                                                             //Ô­µã¼ì²â£¬¹âñî¼ì²â£¬¶Ë¿Ú³£Êä³öÎª¸ß£¬¹âñîÎ´ÕÚµ²£¬¼ì
+             -²âÎªµÍ
+  17          sbit ori = P2^1;                                                                            //ÏÂ¼«ÏÞ¼ì²â
+  18          sbit k3 = P2^2;                                                                             //ÉÏ¼«ÏÞ¼ì²â
+  19          sbit flag_out = P2^3;                                                                       //³ö°å¼ì²â
+  20          sbit flag_in  = P2^4;                                                                       //½ø°å¼ì²â
+  21          
+  22          //µç»úÏà¹ØµÄ±äÁ¿
+  23          int p_imp;                                                                                  //µç»úµÄÎ»ÖÃ
+  24          int a_imp;                                                                                  //ÁÙÊ±Êý¾Ý
+  25          #define speed_max 8                 //ÐèÒª×¢Òâ¸ü¸ÄµÄ³£Á¿                                    //µç»úµÄ×î´óËÙ¶È
+  26          #define speed_start 120             //ÐèÒª×¢Òâ¸ü¸ÄµÄ³£Á¿                                    //Æô¶¯ËÙ¶È
+  27          #define step  601                   //ÐèÒª×¢Òâ¸ü¸ÄµÄ³£Á¿                                    //Óëµç»úµÄÇý¶¯²½ÊýÒªÆ¥Åä
+  28          int speed_now;                                                                              //µ±Ç°ËÙ¶ÈµÄ±äÁ¿
+  29          
+  30          //²ã¸ß±äÁ¿
+  31          #define floor_max 50                //ÐèÒª×¢Òâ¸ü¸ÄµÄ³£Á¿                                    //×î´ó²ãÊý£¬¼ÆÊý´Ó1¿ªÊ¼£¬´Ó¶¥²ã¿ªÊ¼¼Æ
+  32          uchar idata floor_now;                                                                      //µ±Ç°²ã¸ß 
+  33          uchar idata floor_nex;
+  34          long  idata floor_t;                                                                        //ÒòÎªÕâ¸öÊýÊÇÓÐ·ûºÅµÄ£¬ÇÒÊý×Ö±È½Ï´ó£¬ËùÒÔÓÃ³¤ÕûÐÎ
+  35          uchar idata floor_full;                                                                     //²ãÂú±êÖ¾£¬¿Õ-0 ÓÐ-1 Âú-2
+  36          
+  37          //¿â´æ±äÁ¿
+  38          uchar idata flag_ware_i = 0;                                                                //´¢°åÏäÖÐ´ÓÉÏÃæÊýµÄ²ãÊý
+  39          uchar idata flag_sare_j = 0;                                                                //´¢°åÏäÖÐ´ÓÏÂÃæÊýµÄ²ãÊý
+  40          uchar idata ware_con[floor_max];                                                            //ÓÃÓÚ´æ·ÅÃ¿²ãÏäÖÐÊÇ·ñÓÐ°å£¬0-ÎÞ°å£¬1-ÓÐ°å
+  41          uchar idata ware_opt[floor_max];                                                            //ÓÃÓÚ¼ÇÂ¼Ïä×ÓÖÐ°å×ÓµÄÓÅÏÈ¼¶
+  42          uchar idata ware_opt_num;                                                                   //ÓÃÓÚ¼ÇÂ¼ÓÅÏÈ¼¶µÄ×î´óÊý
+  43          
+  44          //×´Ì¬±äÁ¿
+  45          idata bit flag_iao;                                                                         //ÓÃÓÚ±ê¼ÇÊÇ·ñÐèÒª´æ°å£¬0-´æ°åÓÅÏÈ£¬1-³ö°åÓÅÏÈ¡£Éè
+             -¶¨ºÃµÄÓÅÏÈ¼¶£¬»áÍ£Ö¹Ê¹ÓÃ
+  46          idata bit flag_o = 1;                                                                       //Ô­µã±êÖ¾£¬0-Ö»ÔÊÐíÏòÉÏÔË¶¯£¬1-ÔÊÐíÉÏÏÂÔË¶¯
+  47          idata bit flag_pull = 1;                                                                    //À­°åÍê³É±êÖ¾£¬0-Íê³É£¬1-Î´Íê³É
+  48          idata bit flag_push = 1;                                                                    //ÍÆ°åÍê³É±êÖ¾£¬0-Íê³É£¬1-Î´Íê³É
+  49          idata bit flag_safe = 1;                                                                    //°²È«±êÖ¾£¬Ã¿´Î¶¯×÷Ç°¼ì²éÒ»´Î´Ë±êÖ¾£¬ÂÖÑ¯µÄ·½·¨
+             -£¬²»ÓÃÖÐ¶Ï
+  50          idata bit flag_up = 1;                                                                      //ÉÏ°åÍê³É±êÖ¾£¬0-Íê³É£¬1-Î´Íê³É
+  51          idata bit flag_down = 1;                                                                    //ÏÂ°åÍê³É±êÖ¾£¬0-Íê³É£¬1-Î´Íê³É
+  52          idata bit flag_t = 1;                                                                       //ÐÅÏ¢·¢ËÍÍê³É±êÖ¾£¬0-Íê³É£¬1-Î´Íê³É
+C51 COMPILER V9.52.0.0   MAIN                                                              02/11/2017 15:10:28 PAGE 2   
+
+  53          idata bit flag_r = 1;                                                                       //ÐÅÏ¢½ÓÊÕÍê³É±êÖ¾£¬0-Íê³É£¬1-Î´Íê³É
+  54          idata bit flag_top = 1;                                                                     //ÉÏ¼«ÏÞ
+  55          idata bit flag_bottom = 1;                                                                  //ÏÂ¼«ÏÞ
+  56          idata bit flag_ot = 1;                                                                      //³¬Ê±±êÖ¾
+  57          
+  58          void delay_us(long idata time_us)                                                           //ÑÓÊ±º¯Êý£¬¾ÝÊµ²âÖµÍÆÂÛ£¬ÑÓÊ±Ê±¼äÎª t*10 +
+             - 18 us 
+  59          {
+  60   1        while(time_us--);      
+  61   1      }
+  62          
+  63          void delay_ms(long idata time_ms)
+  64          {
+  65   1        int time_ms_add;
+  66   1        while(time_ms--)
+  67   1        {
+  68   2          time_ms_add = 21;
+  69   2          while(time_ms_add--);
+  70   2        }
+  71   1      }
+  72          
+  73          uchar safe()                                                                                //°²È«¼ì²é
+  74          {
+  75   1        flag_safe=0;
+  76   1        if (flag_o==1) flag_safe=1; else P00 = 0;
+  77   1        if (flag_pull==1) flag_safe=1; else P01 = 0;
+  78   1        if (flag_push==1) flag_safe=1; else P02 = 0;
+  79   1        if (flag_up==1) flag_safe=1; else P03 = 0;
+  80   1        if (flag_down==1) flag_safe=1; else P04 = 0;
+  81   1        if (flag_top==1) flag_safe=1; else P05 = 0;
+  82   1        if (flag_bottom==1) flag_safe=1; else P06 = 0;
+  83   1        return flag_safe;
+  84   1      }
+  85          
+  86          void upanddown(floor_nex)                                                                   //ÉÏÏÂ°åº¯Êý£¬´«µÝÄ¿±ê²ã±äÁ¿
+  87          {
+  88   1        long idata length_run;
+  89   1        uint idata dir ;
+  90   1        //if (safe()==1 && flag_ware==1)
+  91   1        //{
+  92   1          delay_ms(300);
+  93   1          speed_now = speed_start;                                                                //¶ÔËÙ¶È¸³³õÖµ
+  94   1          length_run = floor_nex-floor_now;                                                       //ÐèÒªÔË¶¯µÄ²ãÊý = Ä¿µÄ²ã¸ß - µ±Ç°²ã¸ß
+  95   1          floor_t = length_run * step;                                                            //ºóÃæµÄ³£Êý´ú±íÔË¶¯10mmËùÐèµÄµç»úÔË×ª²½Êý£¬Õâ
+             -¸öÖµºÍµç»úÇý¶¯µÄÉèÖÃÓÐ¹Ø
+  96   1          if (floor_t > 0){dir = 0x05;}else{dir = 0x01;}                                          //floor_tÎªÕý£¬ÏòÉÏÔË¶¯£¬floor_tÎª¸º£
+             -¬ÏòÏÂÔË¶¯
+  97   1          floor_t = abs(floor_t);                                                                 //È¡¾ø¶ÔÖµ
+  98   1          for (length_run = 0;length_run < floor_t;length_run++)
+  99   1          {
+ 100   2            P1 = 0x00;
+ 101   2            delay_us(speed_now);
+ 102   2            P1 = dir;                                                                             //ÐèÒªÔË¶¯µÄ·½ÏòÓÉdir±äÁ¿¿ØÖÆ
+ 103   2            delay_us(speed_now);
+ 104   2            if ((floor_t-length_run)>100){if(speed_now > speed_max)speed_now--;}else speed_now++; //Íê³É¼ÓËÙºÍ¼õËÙµ
+             -Ä¹¦ÄÜ£¬»º³å¾àÀë100²½
+ 105   2          }
+ 106   1          floor_now = floor_nex;                                                                  //ÔË¶¯Íê³Éºó£¬µ±Ç°²ã¸ß = Ä¿µÄ²ã¸ß
+ 107   1        //}
+ 108   1      }
+ 109          uint init()                                                                                 //³õÊ¼»¯º¯Êý
+ 110          {
+C51 COMPILER V9.52.0.0   MAIN                                                              02/11/2017 15:10:28 PAGE 3   
+
+ 111   1        long idata init_con;
+ 112   1        speed_now = speed_start;
+ 113   1        upanddown(2);                                                                             //ÏÈÏòÉÏÔË¶¯Á½²ã£¬ÔÙÖØÐÂÕÒÔ­µã
+ 114   1        delay_ms(1000);
+ 115   1        while(ori==0)                                                                             //ÕÒµ½Ô­µãÒÔºó½áÊøÑ­»·
+ 116   1        {
+ 117   2          P1=0x00;
+ 118   2          delay_us(speed_now);
+ 119   2          P1=0x01;                                                                              //ÏòÏÂÔË¶¯
+ 120   2          delay_us(speed_now);
+ 121   2          a_imp++;
+ 122   2          if (speed_now > speed_max) speed_now--;
+ 123   2        }
+ 124   1        for(init_con=0;init_con<100;init_con++){P1=0x01;delay_us(speed_now++);P1=0x00;delay_us(speed_now);}//ÕÒµ½
+             -Ô­µãÒÔºó¼õËÙ
+ 125   1        return 1;
+ 126   1      }
+ 127          
+ 128          uchar opt_out()
+ 129          {
+ 130   1        long idata count;
+ 131   1        uchar opt_level;
+ 132   1        for (count = 0;count < 50;count++)
+ 133   1        {
+ 134   2          if ((opt_level < ware_opt[count]) && ware_con != 0)                                         //È¡a=´æ°åÓÅÏÈ¼¶Àï×îÐ¡µÄÒ»¸ö
+ 135   2          {
+ 136   3            opt_level = ware_opt[count];
+ 137   3          }
+ 138   2        }
+ 139   1        upanddown(count);
+ 140   1        return 0;
+ 141   1      }
+ 142          
+ 143          uchar opt_in()                                                                              //ÓÅ»¯º¯Êý
+ 144          {
+ 145   1        uchar idata count_up;
+ 146   1        uchar idata count_down;
+ 147   1        uchar opt_level;
+ 148   1        uint a;
+ 149   1        count_up = floor_now;
+ 150   1        count_down = floor_now;
+ 151   1        while(ware_con[count_up])                                                                 //ÏòÉÏ²éÕÒµÚÒ»¸ö¿Õ²ã£¬Òò¼ÆÊýÊÇ´Ó1¿ªÊ¼µÄ£¬ËùÒÔ´Ë
+             -´¦Îª1
+ 152   1        {                                                                                         //Èç¹ûµ±Ç°²ã²»Îª¿Õ£¬ÔòÖ´ÐÐÒÔÏÂÐÐ
+ 153   2          if(count_up <= 1)                                                                       //Èç¹û²ãÊý 1  ²»Îª¿Õ£¬Ôò½«²ãÊý±äÁ¿ÉèÖÃÎªÒ»¸ö½Ï´óµÄÊ
+             -ý£¬²¢Ìø³öÑ­»·
+ 154   2          {
+ 155   3            count_up = 999;
+ 156   3            break;
+ 157   3          }
+ 158   2          count_up--;
+ 159   2        }
+ 160   1        
+ 161   1        while(ware_con[count_down])                                                               //ÏòÏÂ²éÕÒµÚÒ»¸ö¿Õ²ã£¬×î´ó²ãÊý³£Á¿ÔÚÈ«¾Ö±äÁ¿¶¨
+             -Òå
+ 162   1        {
+ 163   2          if(count_down >= floor_max)
+ 164   2          {
+ 165   3            count_down = 999;
+ 166   3            break;
+ 167   3          }
+ 168   2          count_down++;
+C51 COMPILER V9.52.0.0   MAIN                                                              02/11/2017 15:10:28 PAGE 4   
+
+ 169   2        }
+ 170   1      
+ 171   1        if(count_up == 999 && count_down == 999)                                                  //Èç¹ûÉÏÏÂ²ã¸ß±ê¼Ç¾ùÎªÒç³ö×´Ì¬£¬Ôò¸³²ãÂú
+             -±ê¼ÇÎª Âú-2
+ 172   1        {
+ 173   2          floor_full = 2;
+ 174   2        }
+ 175   1        if(floor_full != 2)
+ 176   1        {
+ 177   2          if((floor_now - count_up) <= (count_down - floor_now))                                  //ÕÒµ½×î½üµÄ¿Õ²ã
+ 178   2          {
+ 179   3            upanddown(count_up);
+ 180   3          }
+ 181   2          else                                                                                    //Èç¹ûµ½ÉÏÃæµÄ¿Õ²ã½ü£¬ÔòÔË¶¯µ½ÉÏÃæµÄ¿Õ²ã£¬·´Ö®ÒàÈ»
+ 182   2          {
+ 183   3            upanddown(count_down);
+ 184   3          }
+ 185   2          for(a = 0;a <= floor_max;a++)                                                           //²éÕÒÓÅÏÈ¼¶×î´óÊý
+ 186   2          {
+ 187   3            if(ware_opt[a] > ware_opt[a-1])
+ 188   3            {
+ 189   4              ware_opt_num = ware_opt[a];
+ 190   4            }
+ 191   3            else
+ 192   3            {
+ 193   4              ware_opt_num = ware_opt[a-1];
+ 194   4            }
+ 195   3          }
+ 196   2          if(pullboard() == 1)
+*** WARNING C206 IN LINE 196 OF main.c: 'pullboard': missing function-prototype
+ 197   2          {
+ 198   3            ware_con[floor_now] = 1;                                                              //´æ´¢Íê³Éºó£¬¶Ô´Ë²ãµÄ×´Ì¬ÖÃ 1
+ 199   3            ware_opt[floor_now] = 1;                                                              //´æ´¢Íê³Éºó£¬¶Ô´Ë²ãµÄÓÅÏÈ¼¶ÖÃÊý
+ 200   3            return 0;                                                                             //Íê³É·µ»Ø 0
+ 201   3          }
+ 202   2          else
+ 203   2          {
+ 204   3            return 1;                                                                             //Ê§°Ü·µ»Ø 1
+ 205   3          }
+ 206   2        }
+ 207   1        else
+ 208   1        {
+ 209   2                                                                                                  //´Ë´¦×öÒç³öÌáÊ¾
+ 210   2        }
+ 211   1      }
+*** WARNING C280 IN LINE 147 OF main.c: 'opt_level': unreferenced local variable
+ 212          
+ 213          void main()
+ 214          {
+ 215   1        P2 = 0xFF;                                                                                //P2¿Ú×öÊäÈëÓÃ
+ 216   1        if (init() == 1)                                                                          //µ÷ÓÃ³õÊ¼»¯£¬ÇÒ³õÊ¼»¯Íê³ÉÕýÈ·
+ 217   1        {
+ 218   2          floor_now = 0;                                                                          //³õÊ¼»¯Íê³Éºó£¬Éè¶¨µ±Ç°²ã¸ßÎª 0
+ 219   2          while(1)                                                                                //Ö÷Ñ­»·º¯Êý
+ 220   2          {
+ 221   3            if (flag_out == 0 && floor_full != 0)                                                 //³ö°å´«¸ÐÆ÷ÓÐÐÅºÅ£¬ÇÒ²ã±ê¼Ç²»Îª¿Õ£¬ÔòÖ´Ð
+             -Ð³ö°å
+ 222   3            {
+ 223   4              opt_out();
+ 224   4            }
+ 225   3            if (flag_in == 0 && floor_full != 2)                                                  //½ø°å´«¸ÐÆ÷ÓÐÐÅºÅ£¬ÇÒ²ã±ê¼Ç²»ÎªÂú£¬ÔòÖ´ÐÐ
+             -½ø°å
+C51 COMPILER V9.52.0.0   MAIN                                                              02/11/2017 15:10:28 PAGE 5   
+
+ 226   3            {
+ 227   4              opt_in();
+ 228   4            }
+ 229   3          }
+ 230   2        }
+ 231   1        else                                                                                      //³õÊ¼»¯Ê§°ÜÒÔºó
+ 232   1        {
+ 233   2          while(1)
+ 234   2          {
+ 235   3            
+ 236   3          }
+ 237   2        }
+ 238   1      }
+*** WARNING C291 IN LINE 211 OF main.c: not every exit path returns a value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    873    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6      12
+   IDATA SIZE       =    110      16
+   BIT SIZE         =     12    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  3 WARNING(S),  0 ERROR(S)
