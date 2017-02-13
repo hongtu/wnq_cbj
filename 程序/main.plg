@@ -8,18 +8,7 @@ Project File Date:  02/13/2017
 
 <h2>Output:</h2>
 Build target 'Target 1'
-compiling main.c...
-main.c(1): error C100: unprintable character 0xEF skipped
-main.c(1): error C100: unprintable character 0xBB skipped
-main.c(1): error C100: unprintable character 0xBF skipped
-Target not created
-Build target 'Target 1'
-compiling main.c...
-main.c(1): error C100: unprintable character 0xEF skipped
-main.c(1): error C100: unprintable character 0xBB skipped
-main.c(1): error C100: unprintable character 0xBF skipped
-Target not created
-Build target 'Target 1'
+assembling STARTUP.A51...
 compiling main.c...
 main.c(196): warning C206: 'pullboard': missing function-prototype
 main.c(147): warning C280: 'opt_level': unreferenced local variable
@@ -37,3 +26,102 @@ linking...
 Program Size: data=143.4 xdata=0 code=1252
 creating hex file from "main"...
 "main" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(180): warning C206: 'pullboard': missing function-prototype
+main.c(131): warning C280: 'opt_level': unreferenced local variable
+main.c(195): warning C291: not every exit path returns a value
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 01A5H
+Program Size: data=143.4 xdata=0 code=1181
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(185): warning C206: 'pullboard': missing function-prototype
+main.c(136): warning C280: 'opt_level': unreferenced local variable
+main.c(200): warning C291: not every exit path returns a value
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PULLBOARD
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 01A5H
+Program Size: data=143.4 xdata=0 code=1181
+creating hex file from "main"...
+"main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(148): warning C280: 'opt_level': unreferenced local variable
+main.c(212): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PUSHBOARD?MAIN
+Program Size: data=143.4 xdata=0 code=1188
+creating hex file from "main"...
+"main" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(212): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PUSHBOARD?MAIN
+Program Size: data=143.4 xdata=0 code=1188
+creating hex file from "main"...
+"main" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(212): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PUSHBOARD?MAIN
+Program Size: data=143.4 xdata=0 code=1188
+creating hex file from "main"...
+"main" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PUSHBOARD?MAIN
+Program Size: data=143.4 xdata=0 code=1192
+creating hex file from "main"...
+"main" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PUSHBOARD?MAIN
+Program Size: data=143.4 xdata=0 code=1192
+creating hex file from "main"...
+"main" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PUSHBOARD?MAIN
+Program Size: data=143.4 xdata=0 code=1192
+creating hex file from "main"...
+"main" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PUSHBOARD?MAIN
+Program Size: data=143.4 xdata=0 code=1192
+creating hex file from "main"...
+"main" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PUSHBOARD?MAIN
+Program Size: data=143.4 xdata=0 code=1192
+creating hex file from "main"...
+"main" - 0 Error(s), 1 Warning(s).

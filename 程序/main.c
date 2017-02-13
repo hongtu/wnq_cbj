@@ -13,11 +13,16 @@
 #define uint  unsigned int
 
 //检测点
-sbit k1 = P2^0;																																							//原点检测，光耦检测，端口常输出为高，光耦未遮挡，检测为低
+////sbit k1 = P2^0;																																							//原点检测，光耦检测，端口常输出为高，光耦未遮挡，检测为低
 sbit ori = P2^1;																																						//下极限检测
 sbit k3 = P2^2;																																							//上极限检测
 sbit flag_out = P2^3;																																				//出板检测
 sbit flag_in  = P2^4;																																				//进板检测
+
+//输出端口
+sbit k_pullboard = P3^0;
+sbit k_pushboard = P3^1;
+sbit led_warning = P3^7;
 
 //电机相关的变量
 int p_imp;																																									//电机的位置
@@ -70,41 +75,25 @@ void delay_ms(long idata time_ms)
 	}
 }
 
-uchar safe()																																								//安全检查
-{
-	flag_safe=0;
-	if (flag_o==1) flag_safe=1; else P00 = 0;
-	if (flag_pull==1) flag_safe=1; else P01 = 0;
-	if (flag_push==1) flag_safe=1; else P02 = 0;
-	if (flag_up==1) flag_safe=1; else P03 = 0;
-	if (flag_down==1) flag_safe=1; else P04 = 0;
-	if (flag_top==1) flag_safe=1; else P05 = 0;
-	if (flag_bottom==1) flag_safe=1; else P06 = 0;
-	return flag_safe;
-}
-
 void upanddown(floor_nex)																																		//上下板函数，传递目标层变量
 {
 	long idata length_run;
 	uint idata dir ;
-	//if (safe()==1 && flag_ware==1)
-	//{
-		delay_ms(300);
-		speed_now = speed_start;																																//对速度赋初值
-		length_run = floor_nex-floor_now;																												//需要运动的层数 = 目的层高 - 当前层高
-		floor_t = length_run * step;																														//后面的常数代表运动10mm所需的电机运转步数，这个值和电机驱动的设置有关
-		if (floor_t > 0){dir = 0x05;}else{dir = 0x01;}																					//floor_t为正，向上运动，floor_t为负，向下运动
-		floor_t = abs(floor_t);																																	//取绝对值
-		for (length_run = 0;length_run < floor_t;length_run++)
-		{
-			P1 = 0x00;
-			delay_us(speed_now);
-			P1 = dir;																																							//需要运动的方向由dir变量控制
-			delay_us(speed_now);
-			if ((floor_t-length_run)>100){if(speed_now > speed_max)speed_now--;}else speed_now++;	//完成加速和减速的功能，缓冲距离100步
-		}
-		floor_now = floor_nex;																																	//运动完成后，当前层高 = 目的层高
-	//}
+	delay_ms(300);
+	speed_now = speed_start;																																//对速度赋初值
+	length_run = floor_nex-floor_now;																												//需要运动的层数 = 目的层高 - 当前层高
+	floor_t = length_run * step;																														//后面的常数代表运动10mm所需的电机运转步数，这个值和电机驱动的设置有关
+	if (floor_t > 0){dir = 0x05;}else{dir = 0x01;}																					//floor_t为正，向上运动，floor_t为负，向下运动
+	floor_t = abs(floor_t);																																	//取绝对值
+	for (length_run = 0;length_run < floor_t;length_run++)
+	{
+		P1 = 0x00;
+		delay_us(speed_now);
+		P1 = dir;																																							//需要运动的方向由dir变量控制
+		delay_us(speed_now);
+		if ((floor_t-length_run)>100){if(speed_now > speed_max)speed_now--;}else speed_now++;	//完成加速和减速的功能，缓冲距离100步
+	}
+	floor_now = floor_nex;																																	//运动完成后，当前层高 = 目的层高
 }
 uint init()																																									//初始化函数
 {
@@ -122,6 +111,18 @@ uint init()																																									//初始化函数
 		if (speed_now > speed_max) speed_now--;
 	}
 	for(init_con=0;init_con<100;init_con++){P1=0x01;delay_us(speed_now++);P1=0x00;delay_us(speed_now);}//找到原点以后减速
+	return 1;
+}
+
+uchar pullboard()
+{
+	k_pullboard = 1;
+	return 1;
+}
+
+uchar pushboard()
+{
+	k_pushboard = 1;
 	return 1;
 }
 
@@ -144,7 +145,7 @@ uchar opt_in()																																							//优化函数
 {
 	uchar idata count_up;
 	uchar idata count_down;
-	uchar opt_level;
+//	uchar opt_level;
 	uint a;
 	count_up = floor_now;
 	count_down = floor_now;
@@ -206,7 +207,10 @@ uchar opt_in()																																							//优化函数
 	}
 	else
 	{
-																																														//此处做溢出提示
+		while(1)
+		{
+			led_warning = ~led_warning;
+		}
 	}
 }
 
