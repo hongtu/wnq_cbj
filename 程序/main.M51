@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        02/11/2017  15:10:28  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/13/2017  09:52:48  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  main (?C_STARTUP)
 OVERLAY MAP OF MODULE:   main (?C_STARTUP)
 
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/11/2017  15:10:28  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/13/2017  09:52:48  PAGE 2
 
 
 SEGMENT                          DATA_GROUP          IDATA_GROUP
@@ -119,7 +119,7 @@ SYMBOL TABLE OF MODULE:  main (?C_STARTUP)
   N:0080H         SYMBOL        IDATALEN
   C:031CH         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/11/2017  15:10:28  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/13/2017  09:52:48  PAGE 3
 
 
   N:0100H         SYMBOL        PBPSTACKTOP
@@ -179,7 +179,7 @@ SYMBOL TABLE OF MODULE:  main (?C_STARTUP)
   D:0013H         PUBLIC        speed_now
   B:00A0H.1       PUBLIC        ori
   B:0020H.6       PUBLIC        flag_top
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/11/2017  15:10:28  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/13/2017  09:52:48  PAGE 4
 
 
   I:0024H         PUBLIC        floor_nex
@@ -239,7 +239,7 @@ SYMBOL TABLE OF MODULE:  main (?C_STARTUP)
   C:040BH         LINE#         77
   C:0414H         LINE#         78
   C:041DH         LINE#         79
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/11/2017  15:10:28  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/13/2017  09:52:48  PAGE 5
 
 
   C:0426H         LINE#         80
@@ -299,7 +299,7 @@ SYMBOL TABLE OF MODULE:  main (?C_STARTUP)
   -------         DO            
   I:0015H         SYMBOL        count
   D:0008H         SYMBOL        opt_level
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/11/2017  15:10:28  PAGE 6
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/13/2017  09:52:48  PAGE 6
 
 
   -------         ENDDO         
@@ -359,7 +359,7 @@ SYMBOL TABLE OF MODULE:  main (?C_STARTUP)
   C:0175H         LINE#         183
   C:017EH         LINE#         184
   C:017EH         LINE#         185
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/11/2017  15:10:28  PAGE 7
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/13/2017  09:52:48  PAGE 7
 
 
   C:0181H         LINE#         186
@@ -419,7 +419,7 @@ SYMBOL TABLE OF MODULE:  main (?C_STARTUP)
   C:0211H         PUBLIC        ?C?SLCMP
   -------         ENDMOD        ?C?SLCMP
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/11/2017  15:10:28  PAGE 8
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/13/2017  09:52:48  PAGE 8
 
 
   -------         MODULE        ?C?LLDIDATA
